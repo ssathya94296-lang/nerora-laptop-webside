@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA | AI Powered Technology</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #ffffff;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: rgba(8, 8, 8, 0.92);
+            border-bottom: 1px solid #222;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #888;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .nav-btn {
+            padding: 10px 18px;
+            border: 1px solid #555;
+            border-radius: 25px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 160px 7% 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            background:
+                radial-gradient(circle at 80% 30%, #242424 0%, #080808 45%);
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #444;
+            border-radius: 30px;
+            color: #aaa;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #777;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-white {
+            background: white;
+            color: black;
+        }
+
+        .btn-dark {
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            width: 45%;
+            max-width: 600px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 20px 70px rgba(255,255,255,0.08);
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 30px 7%;
+            background: #0d0d0d;
+        }
+
+        .stat {
+            text-align: center;
+            border-right: 1px solid #222;
+        }
+
+        .stat:last-child {
+            border: none;
+        }
+
+        .stat h2 {
+            font-size: 30px;
+        }
+
+        .stat p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* COMMON SECTION */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #777;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            background: #0d0d0d;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #151515;
+            border: 1px solid #272727;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #555;
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #888;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .price {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price strong {
+            font-size: 20px;
+        }
+
+        .buy {
+            background: white;
+            color: black;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 25px;
+        }
+
+        .about-text h2 {
+            font-size: 45px;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            padding: 20px;
+            background: #151515;
+            border: 1px solid #292929;
+            border-radius: 15px;
+        }
+
+        .feature h4 {
+            margin-bottom: 7px;
+        }
+
+        .feature p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #0d0d0d;
+        }
+
+        .contact-box {
+            max-width: 850px;
+            margin: auto;
+            background: #151515;
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid #292929;
+        }
+
+        .contact-box form {
+            display: grid;
+            gap: 18px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: #0c0c0c;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .submit {
+            padding: 15px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px 7%;
+            text-align: center;
+            background: #050505;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+            nav ul {
+                gap: 12px;
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .stat {
+                border-right: none;
+                border-bottom: 1px solid #222;
+                padding-bottom: 20px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">NEX<span>ORA</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#products" class="nav-btn">Explore</a>
+    </nav>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <div class="tag">✦ AI POWERED TECHNOLOGY</div>
+
+            <h1>
+                The Future of
+                <span>Computing.</span>
+            </h1>
+
+            <p>
+                Experience powerful laptops designed for AI,
+                creativity, gaming and modern productivity.
+            </p>
+
+            <div class="buttons">
+                <a href="#products" class="btn btn-white">
+                    Explore Laptops →
+                </a>
+
+                <a href="#about" class="btn btn-dark">
+                    Discover More
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=80">
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="stat">
+            <h2>50K+</h2>
+            <p>Happy Users</p>
+        </div>
+
+        <div class="stat">
+            <h2>25+</h2>
+            <p>Laptop Models</p>
+        </div>
+
+        <div class="stat">
+            <h2>4.9★</h2>
+            <p>Customer Rating</p>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+    <section class="products" id="products">
+
+        <div class="section-title">
+            <small>OUR COLLECTION</small>
+            <h2>Premium Laptops</h2>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>MacBook Pro</h3>
+                    <p>Powerful performance for developers and creators.</p>
+
+                    <div class="price">
+                        <strong>₹1,49,999</strong>
+                        <button class="buy" onclick="buyProduct('MacBook Pro')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>ProBook X</h3>
+                    <p>Elegant design with powerful everyday performance.</p>
+
+                    <div class="price">
+                        <strong>₹89,999</strong>
+                        <button class="buy" onclick="buyProduct('ProBook X')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>Creator 15</h3>
+                    <p>Built for editing, designing and creative work.</p>
+
+                    <div class="price">
+                        <strong>₹1,09,999</strong>
+                        <button class="buy" onclick="buyProduct('Creator 15')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>UltraBook Z</h3>
+                    <p>Thin, lightweight and ready for modern productivity.</p>
+
+                    <div class="price">
+                        <strong>₹74,999</strong>
+                        <button class="buy" onclick="buyProduct('UltraBook Z')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>Gaming Beast</h3>
+                    <p>High-performance laptop for gaming and heavy tasks.</p>
+
+                    <div class="price">
+                        <strong>₹1,29,999</strong>
+                        <button class="buy" onclick="buyProduct('Gaming Beast')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=900&q=80">
+
+                <div class="card-content">
+                    <h3>Business Elite</h3>
+                    <p>Professional laptop for work and business users.</p>
+
+                    <div class="price">
+                        <strong>₹94,999</strong>
+                        <button class="buy" onclick="buyProduct('Business Elite')">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="about">
+
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="about-text">
+
+                <h2>Technology without limits.</h2>
+
+                <p>
+                    NEXORA brings together modern computing,
+                    artificial intelligence and premium hardware
+                    to create a better digital experience.
+                </p>
+
+                <p>
+                    Our products are designed for students,
+                    developers, creators, gamers and professionals.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <h4>⚡ Fast Performance</h4>
+                        <p>Powerful processors for demanding work.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h4>🤖 AI Ready</h4>
+                        <p>Designed for modern AI applications.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h4>🔒 Secure</h4>
+                        <p>Modern security for your data.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h4>💻 Premium Design</h4>
+                        <p>Elegant and professional hardware.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <small>GET IN TOUCH</small>
+            <h2>Contact NEXORA</h2>
+        </div>
+
+        <div class="contact-box">
+
+            <form onsubmit="sendMessage(event)">
+
+                <input type="text" id="name" placeholder="Your Name" required>
+
+                <input type="email" id="email" placeholder="Your Email" required>
+
+                <textarea id="message" placeholder="Your Message" required></textarea>
+
+                <button class="submit" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 NEXORA. All Rights Reserved.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function buyProduct(productName) {
+            alert("You selected: " + productName);
+        }
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+
+            alert(
+                "Thank you, " + name +
+                "! Your message has been sent successfully."
+            );
+
+            event.target.reset();
+        }
+
+    </script>
+
+</body>
+</html>
